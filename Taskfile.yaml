@@ -2,3 +2,34 @@ version: '3'
 
 includes:
   gantry: https://github.com/ivanklee86/taskfiles.git//tools/gantry.yaml
+
+tasks:
+  default:
+    desc: "Run standard sanity checks."
+    cmds:
+     - task: lint
+     - task: test
+
+  fmt:
+    desc: "Format opentofu files."
+    cmds:
+      - tofu fmt -recursive .
+
+  lint:
+    desc: "Lint (and do lint-like things) to OpenTofu."
+    cmds:
+      - tflint --init
+      - tflint
+      - tofu fmt -recursive -check .
+
+  test:
+    desc: "Run tests"
+    cmds:
+      - |
+        find . -type f -name "*.tf" -printf '%h\n' | sort | uniq | while read dir; do
+          echo "Running tests in $dir"
+          cd "$dir"
+          tofu init
+          tofu test
+          cd -
+        done

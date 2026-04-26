@@ -46,3 +46,4 @@ terraform.rc
 # Custom
 .task
 .venv
+.claude
