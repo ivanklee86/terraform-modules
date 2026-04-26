@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Install Task
+      uses: arduino/setup-task@v2
+    - name: Install OpenTofu
+      uses: opentofu/setup-opentofu@v1
+    - name: Install TFLint
+      uses: terraform-linters/setup-tflint@v4
+    - name: Lint
+      run: task lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Install Task
+      uses: arduino/setup-task@v2
+    - name: Install OpenTofu
+      uses: opentofu/setup-opentofu@v1
+    - name: Test
+      run: task test
