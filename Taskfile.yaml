@@ -1,0 +1,4 @@
+version: '3'
+
+includes:
+  gantry: https://github.com/ivanklee86/taskfiles.git//tools/gantry.yaml

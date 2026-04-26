@@ -1,0 +1,41 @@
+{
+   "customizations": {
+      "vscode": {
+         "extensions": [
+            "anthropic.claude-code",
+            "GitHub.copilot",
+            "hashicorp.hcl",
+            "ms-azuretools.vscode-docker",
+            "redhat.vscode-yaml",
+            "tamasfe.even-better-toml",
+            "task.vscode-task"
+         ],
+         "settings": {
+            "yaml.schemas": {
+               "https://taskfile.dev/schema.json": [
+                  "**/Taskfile.yml",
+                  "tasks/**"
+               ]
+            }
+         }
+      }
+   },
+   "features": {
+      "ghcr.io/devcontainers/features/docker-in-docker:2": {
+         "moby": false
+      }
+   },
+   "image": "ghcr.io/ivanklee86/devcontainer/devops:main",
+   "mounts": [
+      "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached",
+      "source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached",
+      "source=${localEnv:HOME}/.kube,target=/home/vscode/.kube,type=bind,consistency=cached",
+      "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind,consistency=cached",
+      "source=${localEnv:HOME}/.ssh/known_hosts,target=/home/vscode/.ssh/known_hosts,type=bind,consistency=cached,readonly"
+   ],
+   "name": "devcontainer",
+   "postCreateCommand": {
+      "install-prek": "prek install && prek run"
+   },
+   "remoteUser": "vscode"
+}
