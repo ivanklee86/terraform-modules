@@ -13,15 +13,15 @@ jobs:
       TASK_X_REMOTE_TASKFILES: 1
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Install Task
       uses: arduino/setup-task@v2
     - name: Install OpenTofu
-      uses: opentofu/setup-opentofu@v1
+      uses: opentofu/setup-opentofu@v2
     - name: Install TFLint
-      uses: terraform-linters/setup-tflint@v4
+      uses: terraform-linters/setup-tflint@v6
     - name: Lint
-      run: task lint
+      run: task --yes lint
 
   test:
     runs-on: ubuntu-latest
@@ -29,10 +29,10 @@ jobs:
       TASK_X_REMOTE_TASKFILES: 1
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Install Task
       uses: arduino/setup-task@v2
     - name: Install OpenTofu
-      uses: opentofu/setup-opentofu@v1
+      uses: opentofu/setup-opentofu@v2
     - name: Test
-      run: task test
+      run: task --yes test
