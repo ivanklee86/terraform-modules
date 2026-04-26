@@ -3,6 +3,7 @@
   "extends": [
     "config:recommended"
   ],
+  "schedule": ["on friday"],
   "packageRules": [
     {
       "description": "Batch all Terraform/OpenTofu provider and module updates into one PR",
