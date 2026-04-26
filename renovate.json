@@ -2,5 +2,23 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "description": "Batch all Terraform/OpenTofu provider and module updates into one PR",
+      "matchManagers": ["terraform"],
+      "groupName": "terraform dependencies",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash"
+    },
+    {
+      "description": "Batch all non-Terraform updates (GitHub Actions, etc.) into one PR",
+      "matchManagers": ["github-actions", "devcontainer"],
+      "groupName": "non-terraform dependencies",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash"
+    }
   ]
 }
