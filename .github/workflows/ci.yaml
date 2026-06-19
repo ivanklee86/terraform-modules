@@ -13,7 +13,7 @@ jobs:
       TASK_X_REMOTE_TASKFILES: 1
     steps:
     - name: Checkout code
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
     - name: Install Task
       uses: arduino/setup-task@v2
     - name: Install OpenTofu
@@ -29,7 +29,7 @@ jobs:
       TASK_X_REMOTE_TASKFILES: 1
     steps:
     - name: Checkout code
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
     - name: Install Task
       uses: arduino/setup-task@v2
     - name: Install OpenTofu
