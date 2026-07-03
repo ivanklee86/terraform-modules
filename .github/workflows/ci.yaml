@@ -15,7 +15,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v7
     - name: Install Task
-      uses: arduino/setup-task@v2
+      uses: arduino/setup-task@v3.0.0
     - name: Install OpenTofu
       uses: opentofu/setup-opentofu@v2
     - name: Install TFLint
@@ -31,7 +31,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v7
     - name: Install Task
-      uses: arduino/setup-task@v2
+      uses: arduino/setup-task@v3.0.0
     - name: Install OpenTofu
       uses: opentofu/setup-opentofu@v2
     - name: Test
